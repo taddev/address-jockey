@@ -1,0 +1,271 @@
+FORMAT: 1A
+HOST: https://aj.example.com/
+
+# address-jockey
+
+Address Jockey is an API to manage address lists.
+
+## Addresses Collection [/addresses]
+
+Methods used to read and create addresses.
+
+### List All Addresses [GET]
+
+List all addresses using this action.
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": "2",
+                "address": "2727 N Plaza Dr",
+                "city": "Rapid City",
+                "state": "South Dakota",
+                "zip": "57702",
+                "country": "United States of America",
+                "created_at": "2015-08-05T08:40:51.620Z"
+            }
+        ]
+
+### Create a New Address [POST]
+
+Create an address using this action. It takes a JSON
+object containing an address, city, state, zip, and country.
+
++ Request (application/json)
+
+        {
+            "address": "2727 N Plaza Dr",
+            "city": "Rapid City",
+            "state": "South Dakota",
+            "zip": "57702",
+            "country": "United States of America"
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /addresses/2
+
+    + Body
+
+            {
+                "id": "2",
+                "address": "2727 N Plaza Dr",
+                "city": "Rapid City",
+                "state": "South Dakota",
+                "zip": "57702",
+                "country": "United States of America",
+                "created_at": "2015-08-05T08:40:51.620Z"
+            }
+
+## Addresses by ID Collection [/addresses/{addresses_id}]
+
+Methods used to manage addresses singletons.
+
++ Parameters
+    + addresses_id (string)
+
+### Read an Address [GET]
+
+Read a single address using this action.
+
++ Response 200 (application/json)
+
+        {
+            "id": "2",
+            "address": "2727 N Plaza Dr",
+            "city": "Rapid City",
+            "state": "South Dakota",
+            "zip": "57702",
+            "country": "United States of America",
+            "created_at": "2015-08-05T08:40:51.620Z"
+        }
+
+### Update an Address [PUT]
+
+Update an address using this action. It takes a JSON object 
+containing the address, city, state, zip, and country information. 
+
++ Request (application/json)
+
+        {
+            "address": "2727 N Plaza Dr",
+            "city": "Rapid City",
+            "state": "South Dakota",
+            "zip": "57702",
+            "country": "United States of America",
+        }
+
++ Response 200 (application/json)
+    
+    + Headers
+    
+            Location: /addresses/2
+  
+    + Body
+
+            {
+                "id": "2",
+                "address": "2727 N Plaza Dr",
+                "city": "Rapid City",
+                "state": "South Dakota",
+                "zip": "57702",
+                "country": "United States of America",
+                "created_at": "2015-08-05T08:40:51.620Z",
+                "updated_at": "2015-08-05T08:40:51.620Z"
+            }
+
+### Delete an Address [DELETE]
+
+Delete an address using this action.
+
++ Response 204
+
+## People Collection [/people]
+
+### List All People [GET]
+
+List all people using this action.
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": "2",
+                "first_name": "Bob",
+                "middle_name": "L",
+                "last_name": "Hope",
+                "addresses": [
+                    "2"
+                ],
+                "created_at": "2015-08-05T08:40:51.620Z"
+            }
+        ]
+
+### Create a New Person [POST]
+
+Create a person using this action. It takes a JSON object
+containing first, middle, and last name items.
+
++ Request (application/json)
+
+        {
+            "first_name": "Bob",
+            "middle_name": "L",
+            "last_name": "Hope",
+            "addresses": [
+                "2"
+            ]
+        }
+    
++ Response 201 (application/json)
+
+    + Headers
+        
+            Location: /people/2
+        
+    + Body
+    
+            {
+                "id": "2",
+                "first_name": "Bob",
+                "middle_name": "L",
+                "last_name": "Hope",
+                "addresses": [
+                    "2"
+                ],
+                "created_at": "2015-08-05T08:40:51.620Z"
+            }
+
+## People by ID Collection [/people/{people_id}]
+
+Methods used to manage people singletons.
+
++ Parameters
+    + people_id (string)
+
+### Read a Person [GET]
+
+Read a single person using this action.
+
++ Response 200 (application/json)
+
+            {
+                "id": "2",
+                "first_name": "Bob",
+                "middle_name": "L",
+                "last_name": "Hope",
+                "addresses": [
+                    "2"
+                ],
+                "created_at": "2015-08-05T08:40:51.620Z"
+            }
+            
+### Update a Person [PUT]
+
+Update a person using this action. It takes a JSON object
+containing first, middle, and last name elements.
+
++ Request (application/json)
+
+        {
+            "first_name": "Bob",
+            "middle_name": "L",
+            "last_name": "Hope",
+            "addresses": [
+                "2"
+            ]
+        }
+        
++ Response 200 (application/json)
+
+    + Headers
+    
+            Location: /people/2
+    
+    + Body
+    
+            {
+                "id": "2",
+                "first_name": "Bob",
+                "middle_name": "L",
+                "last_name": "Hope",
+                "addresses": [
+                    "2"
+                ],
+                "created_at": "2015-08-05T08:40:51.620Z",
+                "updated_at": "2015-08-05T08:40:51.620Z"
+            }
+            
+### Delete a Person [DELETE]
+
+Delete a person using this action
+
++ Response 204
+
+## People Addresses Collection [/people/{people_id}/addresses]
+
+Methods used to manage addresses on a people singleton.
+
++ Parameters
+    + people_id (string)
+
+### List All Addresses for a Person [GET]
+
+List all addresses under a single person using this action.
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": "2",
+                "address": "2727 N Plaza Dr",
+                "city": "Rapid City",
+                "state": "South Dakota",
+                "zip": "57702",
+                "country": "United States of America",
+                "created_at": "2015-08-05T08:40:51.620Z"
+            }
+        ]
