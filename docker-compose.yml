@@ -1,0 +1,22 @@
+version: '2'
+services:
+  fpm:
+    image: php:7-fpm
+    ports:
+      - "9000:9000"
+    volumes:
+      - .:/address-jockey
+    links:
+      - mysql
+  nginx:
+    image: nginx:latest
+    ports:
+      - "8080:80"
+    volumes:
+      - ./docker/site.conf:/etc/nginx/conf.d/site.conf
+      - .:/address-jockey
+    links:
+      - fpm
+  mysql:
+    image: mysql:5.7
+    env_file: mysql.env
