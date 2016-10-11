@@ -1,12 +1,14 @@
 version: '2'
 services:
   fpm:
-    image: php:7-fpm
+    build:
+        context: .
+        dockerfile: ./docker/php-fpm/Dockerfile
     volumes:
       - .:/address-jockey
     links:
       - mysql
-    env_file: phinx.env
+    env_file: ./docker/phinx.env
   nginx:
     image: nginx:latest
     ports:
@@ -18,4 +20,4 @@ services:
       - fpm
   mysql:
     image: mysql:5.7
-    env_file: mysql.env
+    env_file: ./docker/mysql.env
