@@ -2,12 +2,11 @@ version: '2'
 services:
   fpm:
     image: php:7-fpm
-    ports:
-      - "9000:9000"
     volumes:
       - .:/address-jockey
     links:
       - mysql
+    env_file: phinx.env
   nginx:
     image: nginx:latest
     ports:
