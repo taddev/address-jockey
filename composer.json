@@ -21,6 +21,11 @@
         "phpunit/phpunit": ">=4.8 < 6.0",
         "fzaninotto/faker": "^1.6"
     },
+    "autoload": {
+        "psr-4": {
+            "AddressJockey\\": "src/app/"
+        }
+    },
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/"

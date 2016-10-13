@@ -20,6 +20,9 @@ $app = new \Slim\App($settings);
 // Set up dependencies
 require __DIR__ . '/../src/dependencies.php';
 
+// load the Environment variables
+$container['dot']->load();
+
 // Register middleware
 require __DIR__ . '/../src/middleware.php';
 
