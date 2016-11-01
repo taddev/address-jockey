@@ -23,6 +23,7 @@ class AddressesSeeder extends AbstractSeed
                 'city' => $faker->city,
                 'state' => $faker->state,
                 'zip' => $faker->postcode,
+                'people_id' => rand(1,10)
             ];
         }
 

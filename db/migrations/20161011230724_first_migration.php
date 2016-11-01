@@ -49,6 +49,8 @@ class FirstMigration extends AbstractMigration
                   ->addColumn('city', 'string', array('limit' => 255))
                   ->addColumn('state', 'string', array('limit' => 255))
                   ->addColumn('zip', 'string', array('limit' => 255))
+                  ->addColumn('people_id', 'integer')
+                  ->addForeignKey('people_id', 'people', 'id')
                   ->addColumn('created_at', 'datetime', array(
                       'default' => 'CURRENT_TIMESTAMP',
                   ))
@@ -58,14 +60,14 @@ class FirstMigration extends AbstractMigration
                   ))
                   ->create();
 
-        $peopleAddresses = $this->table('people_addresses');
-        $peopleAddresses->addColumn('primary', 'boolean', array(
-                            'default' => false
-                        ))
-                        ->addColumn('people_id', 'integer')
-                        ->addColumn('addresses_id', 'integer')
-                        ->addForeignKey('people_id', 'people', 'id')
-                        ->addForeignKey('addresses_id', 'addresses', 'id')
-                        ->create();
+    //     $peopleAddresses = $this->table('people_addresses');
+    //     $peopleAddresses->addColumn('primary', 'boolean', array(
+    //                         'default' => false
+    //                     ))
+    //                     ->addColumn('people_id', 'integer')
+    //                     ->addColumn('addresses_id', 'integer')
+    //                     ->addForeignKey('people_id', 'people', 'id')
+    //                     ->addForeignKey('addresses_id', 'addresses', 'id')
+    //                     ->create();
     }
 }
