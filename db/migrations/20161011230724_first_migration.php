@@ -60,7 +60,7 @@ class FirstMigration extends AbstractMigration
 
         $peopleAddresses = $this->table('people_addresses');
         $peopleAddresses->addColumn('primary', 'boolean', array(
-                            'default' => 'FALSE'
+                            'default' => false
                         ))
                         ->addColumn('people_id', 'integer')
                         ->addColumn('addresses_id', 'integer')

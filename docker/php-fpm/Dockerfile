@@ -7,4 +7,4 @@ RUN apt-get update \
     && docker-php-ext-install pdo_mysql \
     && apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 
-WORKDIR "/address-jockey"
+WORKDIR /address-jockey
